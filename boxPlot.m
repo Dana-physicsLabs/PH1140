@@ -1,3 +1,4 @@
+%This is written in Matlab code
 %drag your excel file or csv file into the side bar
 %replace filename and otherfilename with the actual name's of your file
 
