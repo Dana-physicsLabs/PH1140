@@ -91,6 +91,16 @@ axs[0].plot(xTrans[5:], yTrans[5:N//2])
 axs[1].plot(X_data, Y_data)
 plt.show()
 
+# If you are wondering how to interpret the graph you now have before you, do not worry. It's a confusing set of axes.
+# Your x-axis is the frequency axis. You should be able to pick out a peak corresponding to either your resonance 
+# frequency or your driving frequency on there. That should help you orient yourself on the x-axis.
+
+# Your y-axis is the relative amplitudes of the frequencies present. Taller bar means more prevalent frequency essentially.
+# I say relative amplitude because I have not run through the normalization of our y data for this fft. What that means is that
+# the actual values of amplitude should not be compared to anything other than values of amplitude from the same graph. 
+# Normalization is just me making sure that the transformation the correct values of the amplitudes.
+# Consider it extra credit if you modify this code and normalize your amplitude values.
+
 # There are obviously some limitations to fft analysis. For one, the fft does not identify the sources of the
 # frequencies you identify. All it does is tell you what frequencies exist. This is less than ideal if you have two
 # very similar frequencies and have difficulty knowing what is from what. However, it is also a very powerful tool
