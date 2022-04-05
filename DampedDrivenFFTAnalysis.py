@@ -4,6 +4,7 @@
 import scipy as sci
 import matplotlib.pyplot as plt
 import numpy as np
+import signal from scipy
 
 # The next thing we need to do is generate arrays in python from our csv file of the data from LoggerPro. We can use
 # numpy to import this data. In this function, we first input the file name we want. Then we use "usecols" to tell
@@ -100,6 +101,27 @@ plt.show()
 # the actual values of amplitude should not be compared to anything other than values of amplitude from the same graph. 
 # Normalization is just me making sure that the transformation the correct values of the amplitudes.
 # Consider it extra credit if you modify this code and normalize your amplitude values.
+
+
+peaks = signal.find_peaks(np.concatenate(([min(yTrans[5:N//2])], yTrans[5:N//2], [min(yTrans[5:N//2])])), height=.5)
+peakArr = (peaks[1]["peak_heights"])
+peakArr = np.sort(peakArr)
+freqList = []
+ampList = []
+for i in peakArr:
+    freqList.append(xTrans[np.where(i == yTrans[5:N//2])])
+    ampList.append(i)
+
+for i in range(len(freqList)):
+    print("Amplitude of ", ampList[i], "At frequency ", freqList[i], "\n")
+
+
+# If you are looking at what I just typed are confused, that's fine. It's a pretty messy and inelegant way to write
+# this. What I just did is find and associate all amplitudes over a value of .1 (you can change this to include more
+# or less data) and print our their associated frequency. This is ordered from smallest frequencies to largest
+# frequencies. You can flip this in the sort if you want. All this is supposed to do is help you see the exact values 
+# of your peaks. 
+
 
 # There are obviously some limitations to fft analysis. For one, the fft does not identify the sources of the
 # frequencies you identify. All it does is tell you what frequencies exist. This is less than ideal if you have two
